@@ -1,6 +1,6 @@
 /* COMP 352 - Assignment 4
  * 23/11/2018
- * Mohanad Arafe (ID: 40042922) & Hambrsoom Baboyan (ID: )
+ * Mohanad Arafe (ID: 40042922) & Hambrsoom Baboyan (ID: 40054395)
  * --------------Hash Code Generation--------------------
  * The HashCodeGenerate class will create random pairs of
  * of hash keys and implement a hash code using 
@@ -21,7 +21,7 @@ public class HashCodeGenerate{
 	}	
 
 	//Generate hash code using Horner's rule
-	public int hashCode(){
+	public static int hashCode(Integer key){
 		String hashValue = key.toString();	
 		int hashCode = hashValue.charAt(0);
 		final int z = 41;
