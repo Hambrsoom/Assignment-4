@@ -33,7 +33,13 @@ public class HashCodeGenerate {
 		}
 		return hashCode;
 	}
-
+	
+	//Getters & Setters
+	public Integer getKey(){ return key; };
+	public String getValue(){ return value; };
+	public void setKey(Integer key){ this.key = key; };
+	public void setValue(String value){ this.value = value; };
+		
 	public static void main(String[] args){
 
 		HashCodeGenerate hc = new HashCodeGenerate();
