@@ -1,15 +1,15 @@
 
 public abstract class abstractHashTable {
-	private static int capacity;
+	public static int capacity;
 	public abstractHashTable() {
 		capacity=128;
 	}
 	public abstractHashTable(int capacity) {
 		this.capacity= capacity;
 	}
-	public abstract void getCapacity();
+	public abstract void getCapacity1();
 	
-	public int getCapacity1() {
+	public int getCapacity() {
 		return capacity;
 	}
 	public void setCapacity(int capacity) {

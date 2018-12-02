@@ -7,11 +7,10 @@
 */
 
 import java.util.Random;
-public class HashCodeGenerate{
-
-	private Integer key;
-	private String value;
-	private final String[] arrayValues = {"COMP352", "COMP248", "COMP249", "SOEN228", "SOEN287", "SOEN341", "COMP335", "ENGR391", "ENGR371"};
+public class HashCodeGenerate {
+	public Integer key;
+	public String value;
+	public final String[] arrayValues = {"COMP352", "COMP248", "COMP249", "SOEN228", "SOEN287", "SOEN341", "COMP335", "ENGR391", "ENGR371"};
 	Random random = new Random();
 
 	//Write a constructor that generates a new pair with a random Integer key
@@ -19,6 +18,10 @@ public class HashCodeGenerate{
 		key = random.nextInt();
 		value = arrayValues[(int)(Math.random() * arrayValues.length)];
 	}	
+	public HashCodeGenerate(Integer key, String value) {
+		this.key   = key;
+		this.value = value;
+	}
 
 	//Generate hash code using Horner's rule
 	public static int hashCode(Integer key){
