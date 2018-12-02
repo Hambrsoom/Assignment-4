@@ -25,6 +25,10 @@ public class MyArrayList <T> implements List{
 		return ctr;
 	}
 
+	public boolean isEmpty(){
+		return ctr == 0;
+	}
+
 	public T[] resize(){
 		double capacity = (double)ctr/size * 100;
 		//double array size
@@ -57,6 +61,13 @@ public class MyArrayList <T> implements List{
 	public T get(int index) {
 		return arr[index];
 	}
+
+	@Override
+    public T set(int index, Object element) {
+		T value = (T) element;
+      return (arr[index] = value);
+    }
+
 
 	/**
 	 *@param obj Object to add in array
@@ -182,11 +193,6 @@ public class MyArrayList <T> implements List{
 		}
 
 		@Override
-		public boolean isEmpty() {
-			throw new UnsupportedOperationException();
-		}
-
-		@Override
 		public Iterator iterator() {
 			throw new UnsupportedOperationException();
 		}
@@ -220,12 +226,6 @@ public class MyArrayList <T> implements List{
 		public boolean retainAll(Collection arg0) {
 			throw new UnsupportedOperationException();
 		}
-
-		@Override
-		public Object set(int arg0, Object arg1) {
-			throw new UnsupportedOperationException();
-		}
-
 
 		@Override
 		public List subList(int arg0, int arg1) {
