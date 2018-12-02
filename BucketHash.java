@@ -1,6 +1,6 @@
 public class BucketHash{
 
-	private MyArrayList<HashCodeGenerate> bucket;
+	public MyArrayList<HashCodeGenerate> bucket;
 
 	BucketHash(){
 		bucket = new MyArrayList<>();
@@ -15,48 +15,34 @@ public class BucketHash{
 	}
 
 	public String get(Integer key){
-		String value = "";
-		if(bucket.isEmpty()){
-			return "Empty list";
-		}
-		else{
-			for(int i = 0; i < bucket.size(); i++){
-				if(bucket.get(i).getKey() == key){
-					value = bucket.get(i).value;
-				}
+		for(int i = 0; i < bucket.size(); i++){
+			if(bucket.get(i).getKey().equals(key)){
+				return bucket.get(i).getValue();
 			}
 		}	
-		return value;
+		return null;
 	}
 
-	public String put(Integer key, String value){ 
-		System.out.println("ye");
-		if(bucket.isEmpty()){
-			return "Empty List.";
-		}
-		else{
-			for(int i = 0; i < bucket.size(); i++){
-				if(bucket.get(i).getKey() == key){
-					String temp = bucket.get(i).getValue();
-					bucket.get(i).setValue(value);
-					return temp;
-				}
-			}	
-			bucket.add(key,value);
-			return null;
-		}
+	public String put(Integer key, String value){
+		HashCodeGenerate pair = new HashCodeGenerate();
+		pair.setKey(key); pair.setValue(value); 
+		for(int i = 0; i < bucket.size(); i++){
+			if(bucket.get(i).getKey().equals(key)){
+				String temp = bucket.get(i).getValue();
+				bucket.get(i).setValue(value);
+				return temp;
+			}
+		}	
+		bucket.add(0,pair);
+		return null;
 	}
 
 	public String remove(Integer key){
-		if(bucket.isEmpty()){
-			return "Empty List.";
-		} else{
-			for(int i = 0; i < bucket.size(); i++){
-				if(bucket.get(i).getKey() == key){
-					String temp = bucket.get(i).getValue();
-					bucket.remove(i);
-					return temp;
-				}
+		for(int i = 0; i < bucket.size(); i++){
+			if(bucket.get(i).getKey().equals(key)){
+				String temp = bucket.get(i).getValue();
+				bucket.remove(bucket.get(i));
+				return temp;
 			}
 		}
 		return null;
