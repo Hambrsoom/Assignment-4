@@ -1,13 +1,16 @@
 public class SeparateChain extends abstractHashTable{
 
-	public BucketHash[] table;
+	public MyArrayList<BucketHash> table;
 	public int currentSize;
 	public int collisions;
 
 
-	public SeperateChain(int capacity){
+	public SeparateChain(int capacity){
 		super(capacity);
-		table = new BucketHash[capacity];
+		table = new MyArrayList<>();
+		for(int i = 0; i < capacity; i++){
+			table.set(i, new BucketHash());
+		}
 		collisions = 0;
 		currentSize = 0;
 	}
@@ -16,15 +19,9 @@ public class SeparateChain extends abstractHashTable{
 
 		long startTime = System.nanoTime();
 		int hashedKey = hashValue(key);
-		String value = "";
-		
-		if(table[hashedKey] == null){
-			return null;
-		} else{
-			value = table[hashedKey].get(key);
-		}	
+		String value = table.get(hashedKey).get(key);		
 		long endTime = System.nanoTime();
-		System.out.println("This method took : " + (endTime - startTime) + " ns.");
+		System.out.println("This method took : " + (endTime - startTime) + " ns.\n");
 		return value;
 
 	}
@@ -33,11 +30,11 @@ public class SeparateChain extends abstractHashTable{
 
 		long startTime = System.nanoTime();
 		int hashedKey = hashValue(key);
-		int oldSize = table[hashedKey].size();
+		int oldSize = table.get(hashedKey).size();
 		
 		//Insert in bucket & keep track of size
-		String temp = table[hashedKey].put(key, value);
-		int newSize = table[hashedKey].size();
+		String temp = table.get(hashedKey).put(key, value);
+		int newSize = table.get(hashedKey).size();
 
 		if(newSize > oldSize)
 			currentSize++;
@@ -49,7 +46,7 @@ public class SeparateChain extends abstractHashTable{
 		System.out.println("There are " + currentSize + " elements in the table");
 		System.out.println("There is a total of " + collisions + " collisions in the table");
 		System.out.println("There currently are  " + newSize + " elements in this bucket");	
-		System.out.println("This method took : " + (endTime - startTime) + " ns.");
+		System.out.println("This method took : " + (endTime - startTime) + " ns.\n");
 
 		return temp;	
 	
@@ -60,9 +57,9 @@ public class SeparateChain extends abstractHashTable{
 		int hashedKey = hashValue(key);
 
 		//Remove the element
-		String temp = table[hashedKey].remove(key);
+		String temp = table.get(hashedKey).remove(key);
 		long endTime = System.nanoTime();
-		System.out.println("This method took : " + (endTime - startTime) + " ns.");
+		System.out.println("This method took : " + (endTime - startTime) + " ns.\n");
 
 		return temp;
 	}
