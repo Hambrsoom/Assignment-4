@@ -1,0 +1,13 @@
+1) Describe (by inspection or graphing) how the time to run put(k,v) increases as you approach (for example) 50 values, 75 values, 95 values, 100 values, and 150 values; and provide reasons for your observations. 
+
+For each method of hashing, we noticed that the number of colissions increase as the number of put(k,v) operations increase. But, for each method, the growth is slightly different. For the Seperate Chaining, collisions occur much faster since the hash values can map to the same index. Meanwhile, with linear & quadratic probing, there is more control as to how keys map in our table. 
+
+
+2) If your put(k,v) method takes an excessive amount of time, describe why this is happening and why it happens at the value it happens at. 
+
+For seperate chaining, the time taken to perform the operation is insignificant since there is no handling for colissions. On the other hand, linear & quadratic must verify if a slot is AVAILABLE which affects the time taken to insert in the hash table.
+
+
+3) Rerun the experiment for quadratic probing with a table that has capacity of 101 (which is a prime number). Does this make a difference for any of the experiments? If so, why? 
+
+When we changed the capacity to 101, 
